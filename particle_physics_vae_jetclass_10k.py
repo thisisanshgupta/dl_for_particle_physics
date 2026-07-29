@@ -191,9 +191,6 @@ VAE = VariationalAutoencoder(encoder, decoder).to(DEVICE)
 
 optimizer = Adam(VAE.parameters(), lr=LR)
 
-print("========================================")
-print("Particle Physics VAE")
-print("========================================")
 print(f"Device:          {DEVICE}")
 print(f"Input dimension: {X_DIM}")
 print(f"Hidden dimension: {HIDDEN_DIM}")
@@ -201,7 +198,6 @@ print(f"Latent dimension: {LATENT_DIM}")
 print(f"Learning rate:   {LR}")
 print(f"KL beta:         {BETA}")
 print(f"Parameters:      {sum(p.numel() for p in VAE.parameters()):,}")
-print("========================================")
 
 
 NUM_EPOCHS = 50
@@ -324,11 +320,9 @@ print(mean.shape)
 
 def denormalize_jets(x):
     x = x.reshape(-1, MAX_PARTICLES, 3).copy()
-
     x[:, :, 0] *= PT_MAX
     x[:, :, 1] = x[:, :, 1] * (2 * DETA_MAX) - DETA_MAX
     x[:, :, 2] = x[:, :, 2] * (2 * DPHI_MAX) - DPHI_MAX
-
     return x
 
 
