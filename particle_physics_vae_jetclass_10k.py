@@ -1,11 +1,14 @@
 import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.decomposition import PCA
+
 import torch
 import torch.nn as nn
 from torch.optim import Adam
 from torch.utils.data import DataLoader, TensorDataset
+
 from datasets import load_dataset
 from tqdm.auto import tqdm
 
